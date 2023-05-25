@@ -1,0 +1,13 @@
+#   Demarage du moteur de réécriture
+RewriteEngine On
+
+#   Réécriture de l'url
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1 [QSA,L]
+ErrorDocument 404 /index.php?p=pageNotFound
+
+
+# modifie la valeur max a 999M
+php_value post_max_size 999M 
